@@ -1,5 +1,7 @@
 # glpi-kb2pdf
 
+> Ce projet a été regénéré par l'IA, j'ai d'abord fait un proto il y a plusieurs mois en python pour extraire les données, pour accélérer les choses j'ai demandé à Claude d'ajouter les fonctionnalités manquantes au programme que j'ai crée par manque de temps pour le réécrire ainsi que le manque de doc pour faire du python proprement.
+
 Outil en ligne de commande qui exporte les articles de la base de connaissance
 GLPI en PDF, prêts à être imprimés, archivés ou diffusés hors de GLPI.
 
