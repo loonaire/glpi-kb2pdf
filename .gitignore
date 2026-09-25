@@ -1,0 +1,26 @@
+# Environnement virtuel
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[co]
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Configuration locale : contient des secrets.
+# Tous les .toml sont ignorés (quel que soit le nom donné à la configuration),
+# sauf la définition du paquet.
+*.toml
+!pyproject.toml
+.env
+
+# Exports
+export/
+*.pdf
+
+# IDE
+.vscode/
+.idea/

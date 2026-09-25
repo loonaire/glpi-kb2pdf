@@ -1,0 +1,178 @@
+/*
+ * Feuille de style par défaut des exports.
+ * Une feuille personnalisée (option --css ou clé « css » de la configuration)
+ * est appliquée après celle-ci et peut donc en surcharger chaque règle.
+ */
+
+/* -- Pied de page : auteur à gauche, titre au centre, numéro de page à droite -- */
+
+@page {
+    size: A4;
+    margin: 2cm 2cm 2.2cm;
+
+    @bottom-left {
+        content: string(kb-author);
+        font-size: 8pt;
+        color: #6b7280;
+    }
+    @bottom-center {
+        content: string(kb-title);
+        font-size: 8pt;
+        color: #6b7280;
+    }
+    @bottom-right {
+        content: counter(page) " / " counter(pages);
+        font-size: 8pt;
+        color: #6b7280;
+    }
+}
+
+html {
+    font-family: "Segoe UI", "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: #1f2328;
+}
+
+/* Le titre et l'auteur sont portés par des attributs de <body> ; ainsi le pied
+   de page est rempli même sans en-tête (--no-header). */
+body {
+    margin: 0;
+    background: #ffffff;
+    string-set: kb-title attr(data-title);
+}
+body[data-author] {
+    string-set: kb-title attr(data-title), kb-author "Auteur : " attr(data-author);
+}
+
+/* -- En-tête de l'article -- */
+
+.kb-header {
+    margin-bottom: 1.4em;
+    padding-bottom: 0.8em;
+    border-bottom: 2px solid #2f3f64;
+}
+
+.kb-title {
+    margin: 0 0 0.3em;
+    font-size: 20pt;
+    line-height: 1.2;
+    color: #2f3f64;
+    text-align: center;
+}
+
+.kb-categories {
+    margin: 0 0 0.6em;
+    text-align: center;
+    font-size: 8.5pt;
+    color: #4b5563;
+}
+
+/* Trois colonnes de même largeur : création, auteur, mise à jour */
+.kb-meta {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 8.5pt;
+    color: #4b5563;
+}
+.kb-meta > div { display: table-cell; vertical-align: top; }
+.kb-meta-left { text-align: left; }
+.kb-meta-center { text-align: center; }
+.kb-meta-right { text-align: right; }
+
+.kb-label {
+    font-weight: bold;
+    color: #6b7280;
+    text-transform: uppercase;
+    font-size: 7pt;
+    letter-spacing: 0.04em;
+}
+
+/* -- Contenu -- */
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.25;
+    margin: 1.2em 0 0.5em;
+    color: #111827;
+    break-after: avoid;
+}
+.kb-content h1 { font-size: 17pt; }
+h2 { font-size: 15pt; }
+h3 { font-size: 13pt; }
+h4 { font-size: 11.5pt; }
+h5, h6 { font-size: 10.5pt; }
+
+p { margin: 0 0 0.7em; orphans: 3; widows: 3; }
+ul, ol { margin: 0.4em 0 0.8em; padding-left: 1.6em; }
+li { margin-bottom: 0.2em; }
+
+a { color: #1d4ed8; text-decoration: underline; }
+
+img {
+    max-width: 100%;
+    height: auto;
+    break-inside: avoid;
+}
+
+figure { margin: 1em 0; }
+figcaption { font-size: 9pt; color: #6b7280; }
+
+/* -- Tableaux -- */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.4em 0 1em;
+    font-size: 9.5pt;
+}
+th, td {
+    border: 1px solid #d1d5db;
+    padding: 5px 8px;
+    text-align: left;
+    vertical-align: top;
+}
+th { background-color: #f3f4f6; font-weight: bold; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+
+/* -- Code -- */
+
+code, pre, kbd, samp {
+    font-family: "Cascadia Mono", Consolas, "DejaVu Sans Mono", "Liberation Mono", monospace;
+    font-size: 9pt;
+}
+code {
+    padding: 1px 4px;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 3px;
+}
+pre {
+    margin: 0.4em 0 1em;
+    padding: 8px 12px;
+    background: #f6f8fa;
+    border: 1px solid #e5e7eb;
+    border-left: 3px solid #2f3f64;
+    border-radius: 3px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+pre code { padding: 0; background: none; border: none; }
+
+/* -- Divers -- */
+
+blockquote {
+    margin: 0.8em 0;
+    padding: 4px 12px;
+    border-left: 4px solid #d1d5db;
+    color: #4b5563;
+}
+
+hr { border: none; border-top: 1px solid #d1d5db; margin: 1.2em 0; }
+
+.kb-missing, .kb-embed {
+    color: #92400e;
+    font-style: italic;
+    font-size: 9pt;
+}

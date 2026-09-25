@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "glpi-kb2pdf"
+version = "0.1.0"
+description = "Exporte les articles de la base de connaissance GLPI en PDF"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+keywords = ["glpi", "pdf", "knowledge base", "weasyprint"]
+classifiers = [
+    "Environment :: Console",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+    "weasyprint>=61",
+    "tomli>=2.0; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "responses>=0.25",
+]
+
+[project.scripts]
+glpi-kb2pdf = "glpi_kb2pdf.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/glpi_kb2pdf"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# permet de lancer les tests sans installer le paquet
+pythonpath = ["src"]
